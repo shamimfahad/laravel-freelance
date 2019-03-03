@@ -27,7 +27,7 @@
     </div>
 </nav>--}}
 
-<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="#"><img src="img/outsource-small.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,9 +48,20 @@
             <li class="nav-item">
                 <a class="nav-link" href="/freelancers">Freelancers</a>
             </li>
+            @if(Auth::check())
             <li class="nav-item">
-                <a class="nav-link active" href="/profile">Username</a>
+                <a class="nav-link active">{{Auth::user()->name}}</a>
+
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('logout') }}">Logout</a>
+            </li>
+                @else
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('login') }}">Login</a>
+                </li>
+                @endif
 
         </ul>
 

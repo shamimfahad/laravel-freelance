@@ -19,9 +19,8 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->integer('budget');
             $table->string('description');
-            $table->integer('bids');
+            $table->integer('bids')->nullable();
             $table->string('skills');
-            $table->integer('bidder_id');
             $table->timestamps();
         });
     }

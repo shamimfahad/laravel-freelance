@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Project;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ProjectController extends Controller
 {
@@ -26,6 +28,7 @@ class ProjectController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -34,7 +37,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*$this->validate($request, [
+            'project_name' => 'required',
+            'project_description' => 'required'
+            ]
+        )*/
+
+        $validatedData = $request->validate([
+            'project_name' => 'required',
+            'project_description' => 'required',
+            'project_budget' => 'required',
+            'skills' => 'required',
+        ]);
+
     }
 
     /**

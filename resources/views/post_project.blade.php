@@ -3,21 +3,39 @@
 @section('content')
 
     <div class="container-fluid">
-        <h2>Post Your Project</h2>
-        {!! Form::open(array('url' => 'post_project/submit')) !!}
-            <div class="form-group">
-                Form::label('name', 'Name');
-                Form::text('name', 'Enter Name');
-            </div>
-            <div class="form-group">
-                Form::label('budget', 'Budget');
-                Form::number('budget', 'Enter Amount');
-            </div>
-            <div class="form-group">
-                Form::label('deadline', 'Deadline');
-                Form::date('deadline', 'Enter Finish Time');
-            </div>
-        {!! Form::close() !!}
+        <h2 class="text-center">Post Your Project</h2>
+        <div class="card row col-lg-6">
+            <article class="card-body">
+                <form method="POST" action="{{ route('projects.store') }}">
+                    {{csrf_field()}}
+                    @if(count($errors) > 0)
+                        @foreach($errors->all() as $error)
+                            <div class="alert alert-danger"></div>
+                    @endif
+                    <div class="form-group">
+                        <label for="project_name">Project Name</label>
+                        <input type="text" class="form-control" id="project_name" placeholder="Enter your project name" name="project_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="project_description">Description</label>
+                        <textarea class="form-control" id="project_description" placeholder="A little description about your project"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="project_budget">Budget</label>
+                        <input type="number" class="form-control" id="project_budget" placeholder="ex: 1000 BDT">
+                    </div>
+                    <div class="form-group">
+                        <label for="skills">Required Skills</label>
+                        <textarea class="form-control" id="skills" placeholder="Multiple skills are separated by comma"></textarea>
+                    </div>
+                    <div class="text-center">
+                    <button type="submit" class="btn btn-outline-success text-center">Submit</button>
+                    </div>
+                </form>
+            </article>
+            <!-- card-body end .// -->
+
+        </div>
     </div>
 
 @endsection

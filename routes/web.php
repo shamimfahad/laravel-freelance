@@ -35,10 +35,20 @@ Route::get('/post_project', function () {
 });
 
 Auth::routes();
+//Route::post('project/create', 'ProjectController@create');
+
+Route::post('project/store',[
+    'uses'=> 'ProjectController@store',
+    'as'=> 'projects.store'
+]);
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('projects','ProjectController');
 Route::resource('bids','BidController');
 Route::resource('workspaces','WorkspaceController');
 Route::resource('messages','MessageController');
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

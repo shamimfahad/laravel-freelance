@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link href="css/app.css" rel="stylesheet">
 </head>
-<body>
+<body style="padding-top: auto;">
     @include('inc.nav')
 <div class="container-fluid">
 
-    @yield('content');
+    @yield('content')
 
 </div>
 
