@@ -10,7 +10,7 @@
             <div class="carousel-caption">
                 <h1 class="display-2">Outsource</h1>
                 <h3>A freelancing marketplace</h3>
-                <button type="button" class="btn btn-outline-light btn-lg"><a href="/platform">Explore Marketplace</a></button>
+                <a class="btn btn-outline-light" href="/platform">Explore Marketplace</a>
             </div>
         </div>
     </div>
@@ -116,8 +116,8 @@
     </div> -->
     <div class="container-fluid padding">
         <div class="row text-center padding">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="textbox">
-                <h2>Get work done on Outsource</h2>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="textbox" style="margin-top: 6%;">
+                <h1>Get work done on Outsource</h1>
                 <hr>
                 <div>
                     <h4>Payment Protection, Guaranteed</h4>
@@ -129,7 +129,7 @@
                 </div>
                 <div>
                     <h4>Browse Profiles</h4>
-                    <p>Browse among thousands of freelancers to find the best one for your </p>
+                    <p>Browse among thousands of freelancers to find the best one for your project.</p>
                 </div>
             </div>
 

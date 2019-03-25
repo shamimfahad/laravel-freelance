@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Project;
 
+use App\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class ProjectController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,6 @@ class ProjectController extends Controller
         //
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -38,36 +37,29 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
-            'project_name' => 'required',
-            'project_description' => 'required'
-            ]
-        )*/
-
         $validatedData = $request->validate([
-            'project_name' => 'required',
-            'project_description' => 'required',
-            'project_budget' => 'required',
+            'service_name' => 'required',
+            'service_description' => 'required',
+            'service_rate' => 'required',
             'skills' => 'required',
             //'datepicker' => 'required',
         ]);
 
-        // Create New Project
+        // Create New Service
 
-        $project = new Project;
-        $project->user_id = Auth::id();
-        $project->name = $request->input('project_name');
-        $project->description = $request->input('project_description');
-        $project->budget = $request->input('project_budget');
-        $project->skills = $request->input('skills');
-        //$project->project_deadline = $request->input('project_deadline');
+        $service = new Service;
+        $service->user_id = Auth::id();
+        $service->name = $request->input('service_name');
+        $service->description = $request->input('service_description');
+        $service->budget = $request->input('service_rate');
+        $service->skills = $request->input('skills');
+        //$service->service_deadline = $request->input('project_deadline');
 
         //Save Project
 
-        $project->save();
+        $service->save();
 
         return redirect('/');
-
     }
 
     /**
@@ -78,12 +70,7 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-       //return "OK";
-        //dd($id);
-        $projects = Project::find($id);
-
-
-        return view('project_description')->with('projects', $projects);
+        //
     }
 
     /**

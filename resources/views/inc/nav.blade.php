@@ -28,7 +28,7 @@
 </nav>--}}
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="#"><img src="img/outsource-small.png"></a>
+    <a class="navbar-brand" href="/"><img src="img/outsource-small.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -39,16 +39,19 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/platform">Marketplace</a>
+            </li>
+
+            @if(Auth::check())
+
+            <li class="nav-item">
+                <a class="nav-link" href="/post_service">Post a Service</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/post_project">Post a project</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/platform">Platform</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/freelancers">Freelancers</a>
-            </li>
-            @if(Auth::check())
             <li class="nav-item">
                 <a class="nav-link active">{{Auth::user()->name}}</a>
 

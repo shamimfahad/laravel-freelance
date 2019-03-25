@@ -1,10 +1,10 @@
 @extends('layouts.app')
-@section('')
+
 @section('content')
     <div class="container-fluid padding">
         <div class="page-header text-center padding">
             <p>Need something done?</p>
-            <button type="submit" class="btn btn-info">Post a project</button>
+            <a class="btn btn-info" href="post_project">Post a project</a>
             <br>
         </div>
     </div>
@@ -235,62 +235,21 @@
                 </tr>
                 </thead>
                 <tbody>
+                @if($projects)
+
+                @foreach($projects as $project)
                 <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
+                    <th scope="row">{{$project->name}}</th>
                     <td>Logo Design</td>
-                    <td>2000</td>
+                    <td>{{$project->budget}}</td>
                     <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
+                    <td><input type="hidden" name="post_id" value={{$project->id}}></td>
+                    <td><a class="btn btn-info" href="{{ route('test',$project->id ) }}">View Details</a></td>
                 </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">I will design a logo and create a brand identity for you</th>
-                    <td>Logo Design</td>
-                    <td>2000</td>
-                    <td>27/01/2019</td>
-                    <td><button type="submit" class="btn btn-info">View Details</button></td>
-                </tr>
+
+                @endforeach
+                @endif
+
                 </tbody>
             </table>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sender_id');
-            $table->integer('receiver_id');
-            $table->text('message_text');
-            $table->timestamp('message_time');
+            $table->integer('user_id');
+            $table->string('name');
+            $table->integer('budget');
+            $table->string('description');
+            $table->string('skills');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateMessagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('services');
     }
 }
