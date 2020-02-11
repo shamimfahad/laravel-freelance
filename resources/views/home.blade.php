@@ -1,54 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="slides" class="carousel slide" data-ride="carousel">
-        <!-- <ul class="carousel-indicators">
-            <li data-target="#slides" data-slide-to="0" class="active"></li>
-        </ul> -->
-        <div class="carousel-inner">
-            <img src="img/bg-1.jpg">
-            <div class="carousel-caption">
-                <h1 class="display-2">Outsource</h1>
-                <h3>A freelancing marketplace</h3>
-                <a class="btn btn-outline-light" href="/platform">Explore Marketplace</a>
-            </div>
+    @include('inc.confirmation')
+
+    <div class="single-item" >
+        <div class="sld">
+            <img src="img/leavingforwork.jpg">
+            <a class="btn btn-lg btn-outline-light" href="/platform">Explore Marketplace</a>
+            <h1 class="display-2 csption">Uparjon</h1>
+            <h3 class="display-1 caption-text">A freelancing marketplace</h3>
         </div>
+        <div class="sld">
+            <img src="img/emptyfield.jpg">
+            <a class="btn btn-lg btn-outline-light" href="{{route('projects')}}">Projects</a>
+            <h1 class="display-2 csption">Browse Projects Posted by Clients</h1>
+
+        </div>
+        <div class="sld">
+            <img src="img/flowers.jpg">
+            <a class="btn btn-lg btn-outline-light" href="{{route('services')}}">Services</a>
+            <h1 class="display-2 csption">Browse Services Posted by Freelancers</h1>
+
+        </div>
+
     </div>
     <!-- Popular Services-->
     <div class="container-fluid padding">
         <div class="row welcome text-center">
             <div class="col-12">
-                <h1 class="display-4">Popular Services</h1>
+                <h1 class="display-2">Browse Categories</h1>
             </div>
         </div>
     </div>
     <!-- Services Cards -->
-    <div class="container-fluid padding">
+
+    <div class="container-fluid padding" style="width: 90%;">
         <div class="row text-center padding">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            @if($categories)
+                @foreach($categories as $category)
+            <div class="col-xs-12 col-sm-4 col-md-3">
                 <img src="img/background.png" class="img-fluid">
                 <div class="carousel-caption">
-                    <h1>Web Design</h1>
+                    <h4 class="overflow-y-hidden">{{$category->name}}</h4>
                     <a href="" class="btn btn-primary">Explore</a>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <img src="img/background.png" class="img-fluid">
-                <div class="carousel-caption">
-                    <h1>Logo Design</h1>
-                    <a href="" class="btn btn-primary">Explore</a>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <img src="img/background.png" class="img-fluid">
-                <div class="carousel-caption">
-                    <h1>Wordpress</h1>
-                    <a href="" class="btn btn-primary">Explore</a>
-                </div>
-            </div>
-        </div>
+                @endforeach
+            @endif
     </div>
-    <!-- Fixed Background -->
+    {{--<!-- Fixed Background -->
     <!-- <figure>
         <div class="fixed-wrap">
             <div id="fixed">
@@ -57,16 +57,16 @@
     </figure> -->
     <!-- How Does it work -->
     <!-- Freelancer Profiles -->
-    <div class="container-fluid padding">
+    --}}{{--<div class="container-fluid padding">
         <div class="row welcome text-center">
             <div class="col-12">
-                <h1 class="display-4">Top Freelancers</h1>
+                <h1 class="display-2">Top Freelancers</h1>
             </div>
             <hr>
         </div>
-    </div>
+    </div>--}}{{--
     <!-- Profile Cards-->
-    <div class="container-fluid padding">
+   --}}{{-- <div class="container-fluid padding">
         <div class="card-deck">
 
             <div class="card">
@@ -96,7 +96,7 @@
 
         </div>
 
-    </div>
+    </div>--}}{{--
 
     <!-- Two Column Section -->
     <!-- <div class="container-fluid padding">
@@ -113,11 +113,11 @@
 
             </div>
         </div>
-    </div> -->
+    </div> -->--}}
     <div class="container-fluid padding">
         <div class="row text-center padding">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="textbox" style="margin-top: 6%;">
-                <h1>Get work done on Outsource</h1>
+                <h1>Get work done on Uparjon</h1>
                 <hr>
                 <div>
                     <h4>Payment Protection, Guaranteed</h4>
@@ -134,7 +134,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <img src="img/bg1.jpg" class="img-fluid">
+                <img src="img/pickbest.jpg" class="img-fluid">
             </div>
         </div>
     </div>

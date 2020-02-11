@@ -8,6 +8,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// jQuery UI
+@import '~jquery-ui/themes/base/all.css';
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
 // Custom
 @import 'custom';
 

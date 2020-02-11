@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
+$slick-font-path: "/node_modules/slick-carousel/slick/fonts/" !default;
+$slick-font-family: "slick" !default;
+$slick-loader-path: "/node_modules/slick-carousel/slick" !default;
+$slick-arrow-color: blacl !default;
+
 html, body{
   height: 100%;
   width: 100%;
@@ -7,14 +12,19 @@ html, body{
   color: #222;
 }
 .navbar {
-  padding: .8rem;
+  /*padding: .8rem;*/
+  background-color: #FFFFFF !important;
 }
-
-.navbar-nav li {
+/*.navbar-custom {
+  background-color: #ff5500;
+}*/
+.navbar-nav li a{
   padding-right: 20px;
+  text-decoration-color: #298fe2 !important;
 }
 .nav-link {
-  font-size: 1.1em !important;
+  font-size: 1.3em !important;
+  text-decoration-color: #298fe2 !important;
 }
 
 .carousel-inner img{
@@ -104,7 +114,7 @@ html, body{
 
 }
 
-.chat
+/*.chat
 {
   list-style: none;
   margin: 0;
@@ -133,7 +143,7 @@ html, body{
 {
   margin: 0;
   color: #777777;
-}
+}*/
 
 .panel .slidedown .glyphicon, .chat .glyphicon
 {
@@ -163,7 +173,296 @@ html, body{
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #555;
 }
+/* chat windows s */
 
+ /*.chat {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+ }
+
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li .chat-body p {
+  margin: 0;
+  color: #777777;
+}
+
+.panel-body {
+  overflow-y: scroll;
+  height: 350px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+!* chat windows e *!
+
+*/
+/* user rating s*/
+/* Center ratings in container */
+.box-example-1to10 .br-wrapper {
+  width: 210px;
+  position: absolute;
+  margin: 0px 0 0 -105px;
+  left: 50%;
+}
+.box-example-movie .br-wrapper {
+  width: 250px;
+  position: absolute;
+  margin: 0px 0 0 -125px;
+  left: 50%;
+}
+.box-example-square .br-wrapper {
+  width: 190px;
+  position: absolute;
+  margin: 0px 0 0 -95px;
+  left: 50%;
+}
+.box-example-pill .br-wrapper {
+  width: 232px;
+  position: absolute;
+  margin: 0px 0 0 -116px;
+  left: 50%;
+}
+.box-example-reversed .br-wrapper {
+  padding-top: 1.3em;
+  width: 356px;
+  position: absolute;
+  margin: 0px 0 0 -178px;
+  left: 50%;
+}
+.box-example-horizontal .br-wrapper {
+  width: 120px;
+  position: absolute;
+  margin: 0px 0 0 -60px;
+  left: 50%;
+}
+/* Display star ratings */
+.star-ratings h1 {
+  font-size: 1.5em;
+  line-height: 2;
+  margin-top: 3em;
+  color: #757575;
+}
+.star-ratings p {
+  margin-bottom: 3em;
+  line-height: 1.2;
+}
+.star-ratings h1,
+.star-ratings p {
+  text-align: center;
+}
+.star-ratings .stars {
+  width: 120px;
+  text-align: center;
+  margin: auto;
+  padding: 0 95px;
+}
+.star-ratings .stars .title {
+  font-size: 14px;
+  color: #cccccc;
+  line-height: 3;
+}
+.star-ratings .stars select {
+  width: 120px;
+  font-size: 16px;
+}
+.star-ratings .stars-example-fontawesome,
+.star-ratings .stars-example-css,
+.star-ratings .stars-example-bootstrap {
+  float: left;
+}
+.star-ratings .stars-example-fontawesome-o {
+  width: 200px;
+}
+.star-ratings .stars-example-fontawesome-o select {
+  width: 200px;
+}
+.start-ratings-main {
+  margin-bottom: 3em;
+}
+/* Boxes */
+.box {
+  width: 100%;
+  float: left;
+  margin: 1em 0;
+}
+.box .box-header {
+  text-align: center;
+  font-weight: 400;
+  padding: .5em 0;
+}
+.box .box-body {
+  padding-top: 2em;
+  height: 85px;
+  /* rating widgets will be absolutely centered relative to box body */
+  position: relative;
+}
+.box select {
+  width: 120px;
+  margin: 10px auto 0 auto;
+  display: block;
+  font-size: 16px;
+}
+.box-large .box-body {
+  padding-top: 2em;
+  height: 120px;
+}
+.box-orange .box-header {
+  background-color: #edb867;
+  color: white;
+}
+.box-orange .box-body {
+  background-color: white;
+  border: 2px solid #f5d8ab;
+  border-top: 0;
+}
+.box-green .box-header {
+  background-color: #50e3c2;
+  color: white;
+}
+.box-green .box-body {
+  background-color: white;
+  border: 2px solid #92eed9;
+  border-top: 0;
+}
+.box-blue .box-header {
+  background-color: #4278f5;
+  color: white;
+}
+.box-blue .box-body {
+  background-color: white;
+  border: 2px solid #8bacf9;
+  border-top: 0;
+}
+@media print {
+  .star-ratings h1 {
+    color: black;
+  }
+  .star-ratings .stars .title {
+    color: black;
+  }
+  .box-orange .box-header,
+  .box-green .box-header,
+  .box-blue .box-header {
+    background-color: transparent;
+    color: black;
+  }
+  .box-orange .box-body,
+  .box-green .box-body,
+  .box-blue .box-body {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+/* user rating e*/
+/* hidden date input s*/
+#hiddenDateInput{
+  /*display: none;*/
+}
+/* hidden date input e*/
+
+/* button on image*/
+
+.sld {
+  position: relative;
+  text-align: center;
+  height: 550px;
+}
+
+/* Make the image responsive */
+.sld img {
+  width: 100%;
+  height:550px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit:cover;
+}
+
+/* Style the button and place it in the middle of the container/image */
+.sld .btn {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  /*font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;*/
+}
+.sld .csption {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  color: white;
+
+}
+.sld .caption-text {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: white;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+
+}
+
+/*service description image*/
+.serv {
+  position: relative;
+  text-align: center;
+  height: 360px;
+}
+.serv img {
+  width: 100%;
+  height:360px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit:cover;
+}
+.profile-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*.ratio-4-3{
+  width:100%;
+  position:relative;
+  background:url() 50% 50% no-repeat;
+  background-size:cover;
+  background-clip:content-box;
+}
+.ratio-4-3:before{
+  display:block;
+  content:"";
+  padding-top:75%;
+}*/
 /* Bootstrap Lightbox using Modal */
 
 #profile-grid { overflow: auto; white-space: normal; }

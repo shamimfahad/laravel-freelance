@@ -1,4 +1,4 @@
-
+import Vue from 'vue';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,6 +8,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuetify from 'vuetify'
+Vue.config.devtools = true
+Vue.use(Vuetify)
+
+import 'vuetify/dist/vuetify.min.css'
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,6 +33,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// resources/assets/js/app.js
+import 'slick-carousel';
+
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+
+import 'jquery-ui/ui/widgets/datepicker.js';
+$('.datepicker').datepicker();
+
+const VueUploadComponent = require('vue-upload-component');
+Vue.component('file-upload', VueUploadComponent);
+
+Vue.component('GroupChat', require('./components/Chat.vue').default);
+Vue.component('PrivateChat', require('./components/PrivateChat.vue').default);
+/*import PrivateChat from "PrivateChat"*/
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    /*components: {
+        PrivateChat,
+    }*/
 });
+
+

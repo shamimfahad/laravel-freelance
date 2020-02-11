@@ -18,8 +18,9 @@ class CreateServicesTable extends Migration
             $table->integer('user_id');
             $table->string('name');
             $table->integer('budget');
-            $table->string('description');
-            $table->string('skills');
+            $table->text('description');
+            $table->string('category');
+            $table->integer('finish_time');
             $table->timestamps();
         });
     }

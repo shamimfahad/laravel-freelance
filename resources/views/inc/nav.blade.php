@@ -1,67 +1,45 @@
-{{--<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="img/outsource-small.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/post_project">Post a project</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/platform">Platform</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/freelancers">Freelancers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/profile">Username</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>--}}
-
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="img/outsource-small.png"></a>
+<nav class="navbar navbar-expand-md navbar-light bg-light primary-color">
+    <a class="navbar-brand" href="/"><img src="img/logoo-small.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
 
-        <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <form action="{{route('search')}}" method="get" class="form-inline mt-2 mt-md-0  py-0" >
+            {{csrf_field()}}
+            <input class="form-control mr-sm-2" name="q" type="text" placeholder="Search" aria-label="Search">
+            <select name="type" id="" class="form-control">
+                <option value="1">Project</option>
+                <option value="2">Services</option>
+            </select>
+            <button class="btn btn-outline-primary btn-sm my-0" type="submit">Search</button>
         </form>
         <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item">
-                <a class="nav-link" href="/platform">Marketplace</a>
+            <li class="nav-item py-0">
+                <a class="nav-link" style="text-decoration-color: #298fe2 !important;" href="/platform">Marketplace</a>
             </li>
 
             @if(Auth::check())
 
-            <li class="nav-item">
-                <a class="nav-link" href="/post_service">Post a Service</a>
+            <li class="dropdown nav-item py-0">
+                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">Create Post
+                    {{--<span class="caret"></span>--}}</a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" style="font-max-size: 1.1em !important;" href="{{ route('post_project') }}">Post project</a></li>
+                    <li><a class="nav-link" href="{{ route('post_service') }}">Post Service</a></li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/post_project">Post a project</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active">{{Auth::user()->name}}</a>
+            <li class="nav-item py-0">
+                <a class="nav-link active" href="/profile">{{Auth::user()->name}}</a>
 
             </li>
-            <li class="nav-item">
+            <li class="nav-item py-0">
                 <a class="nav-link active" href="{{ route('logout') }}">Logout</a>
             </li>
                 @else
 
-                <li class="nav-item">
+                <li class="nav-item py-0">
                     <a class="nav-link active" href="{{ route('login') }}">Login</a>
                 </li>
                 @endif

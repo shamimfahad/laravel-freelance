@@ -11,16 +11,26 @@
     },
     "devDependencies": {
         "axios": "^0.18",
-        "bootstrap": "^4.0.0",
+        "bootstrap": "^4.3.1",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
-        "laravel-mix": "^4.0.7",
+        "jquery": "^3.3.1",
+        "jquery-ui": "^1.12.1",
+        "laravel-mix": "^4.0.15",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
+        "pusher-js": "^4.4.0",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
+        "sass": "^1.17.4",
         "sass-loader": "^7.1.0",
-        "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.7"
+        "vue": "^2.6.10",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "emoji-mart-vue": "^2.6.6",
+        "jquery-bar-rating": "^1.2.2",
+        "laravel-echo": "^1.5.3",
+        "slick-carousel": "^1.8.1",
+        "vue-upload-component": "^2.8.20",
+        "vuetify": "^1.5.9"
     }
 }

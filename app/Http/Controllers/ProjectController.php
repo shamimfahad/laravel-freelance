@@ -1,11 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Project;
-
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Project;
+use App\Category;
+use App\Bid;
+
 
 class ProjectController extends Controller
 {
@@ -16,7 +20,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::paginate(5);
+        $categories = Category::all();
+
+        return view('projects',compact('projects','categories'));
     }
 
     /**
@@ -49,10 +56,12 @@ class ProjectController extends Controller
             'project_description' => 'required',
             'project_budget' => 'required',
             'skills' => 'required',
-            //'datepicker' => 'required',
+            //'project_deadline' => 'required',
         ]);
 
         // Create New Project
+        $finishdate = $request->input('project_deadline');
+        $deadline = \Carbon\Carbon::parse($finishdate)->format('d/m/Y');
 
         $project = new Project;
         $project->user_id = Auth::id();
@@ -60,13 +69,13 @@ class ProjectController extends Controller
         $project->description = $request->input('project_description');
         $project->budget = $request->input('project_budget');
         $project->skills = $request->input('skills');
-        //$project->project_deadline = $request->input('project_deadline');
+        $project->project_deadline = $deadline;
 
         //Save Project
 
         $project->save();
 
-        return redirect('/');
+        return redirect('/')->with('success','Project Posted');
 
     }
 
@@ -80,10 +89,46 @@ class ProjectController extends Controller
     {
        //return "OK";
         //dd($id);
-        $projects = Project::find($id);
+        $project = Project::find($id);
+        $user_id = $project->user->id;
 
 
-        return view('project_description')->with('projects', $projects);
+        if (Auth::check()) {
+            $user_id = Auth::user()->id;
+        }
+        $bids = Bid::where([
+            ['user_id',$user_id],
+            ['project_id', $id]
+        ])->first();
+
+        $me = Auth::user();
+
+        $bidder = Bid::where('project_id',$id)->get();
+
+        $count = Bid::where('project_id',$id)->count();
+
+
+        return view('project_description')->with('project', $project)
+            ->with('bids', $bids)
+            ->with('bidder',$bidder)
+            ->with('users',$me)
+            ->with('count',$count);
+    }
+
+    public function individualProject(){
+        $user = Auth::user();
+        /*if (Auth::check()) {
+            $uid = Auth::user()->id;
+        }*/
+        $uid = Auth::id();
+        $projects = Project::where([
+            ['user_id',$uid]
+        ])->get();
+
+        //$projects = Project::find($id);
+        /*dd($user);*/
+        /*dd($projects);*/
+        return view('my-projects')->with('user', $user)->with('projects', $projects);
     }
 
     /**
@@ -106,7 +151,42 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+
+    }
+
+
+    public function done($id)
+    {
+        $project = Project::find($id);
+        $client = $project->user_id;
+        /*if (Auth::check()) {
+            $client = Auth::user()->id;
+        }*/
+
+//        $bid = Bid::where([
+//            ['project_id', $id],
+//            ['accepted', 1]
+//        ])->get();
+
+        $bid = Bid::where('project_id',$id)->where('accepted',1)->first();
+        $freelancer_id = $bid->user_id;
+
+        $balance = $bid->amount;
+
+        $per = ($balance*95)/100;
+        $freelancer = User::find($freelancer_id);
+        $freelancer->balance = $per;
+        $project->completed = '1';
+
+        $project->save();
+        $freelancer->save();
+
+        return view('ratings')->with('projects', $project)
+            ->with('bids', $bid)
+            ->with('freelancer',$freelancer)
+            ->with('users',$client);
+
     }
 
     /**
